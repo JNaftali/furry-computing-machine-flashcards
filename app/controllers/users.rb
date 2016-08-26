@@ -3,12 +3,12 @@ get '/users/new' do
 end
 
 post '/users' do
-  new_user = User.new(params[:new_user])
-  if new_user.save
-    session[:user_id] = new_user.id
+  @user = User.new(params[:user])
+  if @user.save
+    session[:user_id] = @user.id
     redirect '/'
   else
-    @errors = new_user.errors.full_messages
+    @errors = "Invalid username and/or password"
     erb :'users/new'
   end
 end

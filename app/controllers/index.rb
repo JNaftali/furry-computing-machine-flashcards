@@ -1,5 +1,6 @@
 get '/' do
-  erb :index
+  @decks = Deck.all
+  erb :'index'
 end
 
 get '/login' do
@@ -8,15 +9,12 @@ end
 
 post '/login' do
   user = User.find_by(username: params[:username])
-
-  #other login stuff
-
-  if new_user.save
-    session[:user_id] = new_user.id
+  if user && user.authenticate(params[:password])
+    session[:user_id] = user.id
     redirect '/'
   else
-    @errors = new_user.errors.full_messages
-    erb :'users/new'
+    @errors = "Invalid username and/or password"
+    erb :login
   end
 end
 
