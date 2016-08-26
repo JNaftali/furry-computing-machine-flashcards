@@ -4,9 +4,15 @@ class Round < ActiveRecord::Base
   has_many :guesses
   has_many :cards, through: :deck
 
-  # def correct_first_guesses
-  #   self.guesses.group(:card_id).count { |guess|  && guess.correct? }
-  # end
+  def finished_cards
+    @finished_cards ||= []
+  end
 
+  def finished_cards=(thing)
+    @finished_cards = thing
+  end
 
+  def draw_card
+    (self.cards - self.finished_cards).sample
+  end
 end
