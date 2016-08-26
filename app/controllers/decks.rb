@@ -17,7 +17,6 @@ get '/card/:id' do
   @round = round.find_by[id: session[:round_id]]
   @card = card.find_by[id: params[:id]]
   @deck = deck.find_by[id: @round.deck_id]
-  erb: 'decks/show'
 
 
 end
