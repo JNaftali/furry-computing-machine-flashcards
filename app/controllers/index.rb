@@ -13,8 +13,8 @@ post '/login' do
     session[:user_id] = user.id
     redirect '/'
   else
-    @errors = new_user.errors.full_messages
-    erb :index
+    @errors = "Invalid username and/or password"
+    erb :login
   end
 end
 

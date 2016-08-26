@@ -1,9 +1,9 @@
-
-
-Please <a href="/users/new">create a new account</a>
+<% if @errors %>
+  <%= @errors %>
+<% end %>
 
 <form method="post" action="/login">
-  <label for="username">Email: </label>
+  <label for="username">Username: </label>
   <input type="text" name="username">
   <label for="password">Password: </label>
   <input type="password" name="password">
