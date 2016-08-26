@@ -5,7 +5,7 @@ get '/decks' do
 end
 
 get '/decks/:id' do
-  @round = Round.new[deck_id: params[:id]]
+  @round = Round.new(deck_id: params[:id])
   @round.save
   session[:round_id] = @round.id
   card = @round.draw_card
@@ -17,5 +17,5 @@ get '/cards/:id' do
   @card = card.find_by[id: params[:id]]
   @deck = deck.find_by[id: @round.deck_id]
 
-
+  redirect '/cards/#{card.id}'
 end
