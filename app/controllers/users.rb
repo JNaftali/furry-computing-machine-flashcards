@@ -14,5 +14,7 @@ post '/users' do
 end
 
 get '/users/:id' do
-  :'users/details'
+  halt(404) unless User.find_by(id: params[:id])
+  @rounds = Round.where(user_id: params[:id])
+  erb :'users/statistics'
 end
