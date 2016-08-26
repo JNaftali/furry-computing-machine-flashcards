@@ -5,11 +5,13 @@ class Round < ActiveRecord::Base
   has_many :cards, through: :deck
 
   def finished_cards
-    @finished_cards ||= []
-  end
-
-  def finished_cards=(thing)
-    @finished_cards = thing
+    result = []
+    self.guesses.each do |guess|
+      if guess.correct?
+        result << guess.card
+      end
+    end
+    result
   end
 
   def draw_card

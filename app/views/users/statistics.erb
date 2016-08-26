@@ -1,0 +1,20 @@
+<p>
+<%= current_user.username %><br><br>
+
+
+<%@rounds.each do |round|%>
+Date:<%=round.updated_at.to_date%>
+Deck: <%=round.deck.name%>
+Cards In deck:<%=round.cards.length%>
+First Guess Correct: <%=correct_first_try(round)%>
+Total Guesses: <%=round.guesses.length%>
+<br>
+<%end%>
+</p>
+<!-- - For each deck played:
+  - show each round
+    - for each round:
+      - show timestamp,
+      - show cards in deck,
+      - show first guess total,
+      - show total guesses -->
