@@ -1,0 +1,9 @@
+<h1><% @deck.name %></h1>
+
+<h2>Flashcard Decks</h2>
+<p> <% @card.question %> </p>
+<form method="post" action="/entries/<%= @entry.id %>" class="inline">
+<input type="text" name = "guess"/>
+<input type="submit" value="Submit Guess">
+</form>
+
