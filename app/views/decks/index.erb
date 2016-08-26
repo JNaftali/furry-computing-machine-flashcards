@@ -1,11 +1,4 @@
 <h1>Flashcards</h1>
-<%if login?%>
-<a href="/logout">Logout</a>
-<%else%>
-<a href="/login">Logout</a>
-<a href="/users/new">Register</a>
-<%end%>
-
 <h2>Flashcard Decks</h2>
 <% @decks.each do |deck| %>
 <a href="/decks/<%=deck.id%>"><%= deck.name %></a>
