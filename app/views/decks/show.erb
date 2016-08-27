@@ -1,7 +1,8 @@
-<% if params[:last_answer] == "true" %>
+<% unless params[:correct_answer] %>
 <p>Congrats! You got it right. </p>
-<% elsif params[:last_answer] == "false" %>
+<% else %>
 <p> Sorry, you will get it next time. </p>
+<p> The correct answer was <%=params[:correct_answer]%></p>
 <%end%>
 
 <h1><% @round.deck.name %></h1>

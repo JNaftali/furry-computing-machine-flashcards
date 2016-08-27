@@ -5,6 +5,8 @@ post '/cards/:id' do
   if @round.finished_cards.length == @round.cards.length
     redirect "/decks/:id/statistics"
   else
-    redirect "/decks/#{@round.deck_id}?last_answer=#{@guess.correct?}"
+    path = "/decks/#{@round.deck_id}"
+    path += "?correct_answer=#{@guess.card.answer}" unless @guess.correct?
+    redirect path
   end
 end
